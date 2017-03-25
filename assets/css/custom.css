@@ -24,10 +24,6 @@
     margin: 0px auto;
 }
 
-/*.main-text {
-    margin-top: 15%;
-}*/
-
 .carousel-caption {
     right: 0px;
     left: 0px;
@@ -50,21 +46,27 @@
     height: 180px;
 }
 
+#myintrotitle {
+    margin: 135px 0px 35px 0px;
+}
+
+
 /*medium size*/
 @media only screen and (max-width: 1024px) {
 
     .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
         width: 200px;
     }
-    /*.col-md-15 {
-        width: 20%;
 
-    }*/
     .search-bar {
         width: 95%;
     }
     .category-box {
         height: 300px;
+    }
+
+    #myintrotitle {
+        margin: 115px 0px 35px 0px;
     }
 }
 
@@ -73,9 +75,6 @@
     .container {
         width: 90%;
     }
-    /*.intro-title {
-        width: 75%;
-    }*/
     .btn-search {
         margin-top: 0px;
         width: 100%;
@@ -93,6 +92,9 @@
         width: 31%;
         margin-left: -57px;
     }
+    #myintrotitle {
+        margin: 45px 0px 15px 0px;
+    }
 }
 
 /*mobile view portrait*/
@@ -100,12 +102,25 @@
     .container {
         width: 90%;
     }
+    #myintrotitle {
+        margin: 35px 0px 15px 0px;
+    }
 }
 
 /*mobile view landscape*/
 @media only screen and (max-width: 480px) {
+    .header {
+        height: 104px;
+    }
+    .navbar2 {
+        background: #ffffff;
+        width: 100%;
+        z-index: 999999;
+        position: fixed;
+        top: 0px;
+    }
     .container {
-        width: 90%;
+        width: 88%;
     }
     #myintrotitle {
         font-size: 20px;
@@ -119,19 +134,60 @@
     .features {
         margin-bottom: 14%;
     }
+    #myCol12 {
+        display: none;
+    }
+    #myintrotitle {
+        margin: -4px 0px 0px 0px;
+    }
+    .category-box2 {
+        height: 300px;
+    }
+    /*#map {
+        position: inherit !important;
+    }*/
+    #datepick , #mountains {
+        height: 55px;
+        border-radius: 25px;
+        padding-left: 14px;
+    }
+    .home_search .container {
+        margin-top: 0%;
+    }
+    /*#myclearfixsearch {
+        display: none;
+    }*/
+
 }
 
 /*mobile view landscape*/
 @media only screen and (max-width: 360px) {
     .container {
-        width: 96%;
+        width: 90%;
     }
+    #myCol12 {
+        display: none;
+    }
+    .category-box2 {
+        height: 300px;
+    }
+    #datepick , #mountains {
+        height: 55px;
+        border-radius: 25px;
+        padding-left: 14px;
+    }
+
+
 }
 
 /*mobile view landscape*/
 @media only screen and (max-width: 320px) {
     .container {
-        width: 96%;
+        width: 90%;
     }
+    #myCol12 {
+        display: none;
+    }
+
 
 }
