@@ -1,21 +1,5 @@
 <link href="<?php echo base_url(); ?>assets/css/full-slider.css" rel="stylesheet">
 
-<!-- Start intro section -->
-<!--dynamic data-->
-<?php
-$Url="https://www.synergy-travel.com/ride-back/tour/list?order=ASC&pageSize=9";
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,$Url);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$btc= curl_exec($ch);
-$data=json_decode($btc);
-//print_r($data);
-curl_close($ch);
-
-?>
-
-<!--dynamic end-->
 <section id="intro" class="section-intro carousel slide home_search">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -28,8 +12,8 @@ curl_close($ch);
             <div class="overlay">
                 <div class="container ">
                     <div class="main-text ">
-                        <h1 class="intro-title" id="myintrotitle" style="font-family:'Circular Std Black';font-weight:normal;margin-top: 6%;">Ride Your dream starts here</h1>
-                        <p class="sub-title" style="font-family:'Circular Std Book';font-weight:normal;font-size:16px">Into one user-friendly website</p>
+                        <h1 class="intro-title" id="myintrotitle">Your Dream Starts Here</h1>
+                        <!--<p class="sub-title" style="font-family:'Circular Std Book';font-weight:normal;font-size:16px">Into one user-friendly website</p>-->
                         <!-- Start Search box -->
                         <form class="search-form" method="post" action="<?php echo base_url(); ?>home/search">
                             <input type="hidden" name="pageNum" value="0" />
@@ -41,15 +25,12 @@ curl_close($ch);
                                         <datalist id="browsers">
                                             <option value="Italy">
                                             <option value="Chile">
-                                            <option value="Peru">
-                                            <option value="Gerua">
-                                            <option value="Safari">
                                         </datalist>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-xs-12 col-sm-3">
                                     <div class="input-group-addon search-category-container">
-                                        <input type="text" name="selecteddate" class="form-control3 datepicker" id="from-datepicker" placeholder="starts on" value="yy-mm-dd"/>
+                                        <input type="text" name="selecteddate" class="form-control3 datepicker" id="from-datepicker" placeholder="yyyy-mm-dd"/>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-xs-12 col-sm-3">
@@ -70,15 +51,7 @@ curl_close($ch);
                                     <button class="btn1 btn-common btn-search btn-block"><strong>Go</strong></button>
                                 </div>
                             </div>
-                            <!-- Mobile view -->
-                            <div class="row search-bar search-bar2 hidden-md hidden-lg hidden-sm">
-                                <div class="col-xs-12">
-                                    <div class="input-group-addon search-category-container">
-                                        <input type="text" name="endPoint2" id="endPoint2" class="form-control3" placeholder="Destination"/>
-                                        <span  class="banner-search-position"><a class='inline' href="#dream" style="text-decoration:underline;"> <i class="fa fa-search searc" ></i> </a></span>
-                                    </div>
-                                </div>
-                            </div>
+
                             <!-- filter-start -->
                             <div class="row search-bar clear " >
                                 <div class="col-md-12 left1024">
@@ -139,9 +112,44 @@ curl_close($ch);
                                 </div>
                             </div>
                         </form>
+                        <form class="search-form" method="post" action="<?php echo base_url(); ?>home/search">
+                            <!-- Mobile view -->
+                            <div class="row search-bar search-bar2 hidden-md hidden-lg hidden-sm">
+                                <div class="col-xs-12">
+                                    <div class="input-group-addon search-category-container">
+                                        <!--<input type="text" name="endPoint2" id="endPoint2" class="form-control3" placeholder="Destination"/>-->
+                                        <input list="browsers" type="text" name="endPoint" id="endPoint" class="form-control3" placeholder="Destination"/>
+                                        <datalist id="browsers">
+                                            <option value="Italy">
+                                            <option value="Chile">
+                                        </datalist>
+                                        <span  class="banner-search-position"><a class='inline' href="#dream" style="text-decoration:underline;"> <i class="fa fa-search searc" ></i></a></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="input-group-addon search-category-container">
+                                        <input  type="text" name="selecteddate" class="datepicker" id="datepick" placeholder="starts on" value="yyyy-mm-dd"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="input-group-addon search-category-container">
+                                        <select class="dropdown-product" id="mountains" name="tourType">
+                                            <option value="">Ride type</option>
+                                            <option value="">All</option>
+                                            <option value="ALL_MOUNTAIN">All Mountain</option>
+                                            <option value="CROSS_COUNTRY">Cross Country</option>
+                                            <option value="DOWNHILL">Downhill</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12" style="padding:20px;">
+                                    <button class="btn2 btn-common btn-block"><strong>Go</strong></button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="col-md-12 hidden-xs">
-                        <div class="toggle"> </div>
+                        <div class="toggle"></div>
                     </div>
                     <!-- End Search box -->
                 </div>
@@ -149,11 +157,11 @@ curl_close($ch);
         </div>
         <div class="item active">
             <!-- Set the first background image using inline CSS below. -->
-            <div class="fill" style="background-image:url('<?php echo base_url(); ?>assets/img/slide1.jpg');"></div>
+            <div class="fill" style="background-image:url('<?php echo base_url(); ?>assets/image/02.jpg');"></div>
         </div>
         <div class="item">
             <!-- Set the second background image using inline CSS below. -->
-            <div class="fill" style="background-image:url('<?php echo base_url(); ?>assets/img/slide1.jpg');"></div>
+            <div class="fill" style="background-image:url('<?php echo base_url(); ?>assets/image/01.jpg');"></div>
         </div>
     </div>
 </section>
@@ -174,12 +182,26 @@ curl_close($ch);
 
                 //echo $cnt=count($tours);
                 foreach($tours as $key=>$tour)
-                {                   
+                {
+                    $currency_symbol="";
                     //$price=$tour->tour->price;
                     //$currency=$tour->tour->currency;
                     $image=$tour->defaultImage->image;
                     $title_img=$tour->tour->title;
 					$price=$tour->sap[0]->price;
+                    $currency=$tour->tour->currency;
+                    if($currency=='GBP')
+                    {
+                        $currency_symbol='£';
+                    }
+                    else if($currency=='EUR')
+                    {
+                        $currency_symbol='€';
+                    }
+                    else
+                    {
+                        $currency_symbol='$';
+                    }
 					//$price=$sap[0]->price;
 					//$date=$sap[0]->time;
                     //$price=$tour->tour->sap->price;
@@ -196,7 +218,7 @@ curl_close($ch);
                         <div class="icon">
                             <a href="#">
                                 <i class=" color-2">
-                                    $ $price
+                                    $currency_symbol$price 
                                     <span> per offer </span>
                                 </i>
                             </a>
@@ -233,10 +255,23 @@ abc;
                         //echo $cnt=count($tours);
                         foreach($toursmini as $key=>$tour)
                         {
-
+                            $currency_symbol="";
                             $image=$tour->defaultImage->image;
                             $title_img=$tour->tour->title;
                             $price=$tour->sap[0]->price;
+                            $currency=$tour->tour->currency;
+                            if($currency=='GBP')
+                            {
+                                $currency_symbol='£';
+                            }
+                            else if($currency=='EUR')
+                            {
+                                $currency_symbol='€';
+                            }
+                            else
+                            {
+                                $currency_symbol='$';
+                            }
                             $tour_id=$tour->tour->id;
                             $url=base_url()."home/detail?tour_id=$tour_id";
                             echo<<<abc
@@ -248,7 +283,7 @@ abc;
                                 <div class="icon">
                                    <a href="#">
                                       <i class=" color-2">
-                                         $price
+                                         $currency_symbol$price
                                          <span> per offer </span>
                                       </i>
                                    </a>
@@ -288,7 +323,7 @@ abc;
                 <h2 class="title-2"> Stay always up to date</h2>
                 <p class="title-2a">Subscribe to our newletter</p>
                 <div class="subscribesmall">
-                    <form id="subscribe" action="#" >
+                    <form id="subscribe" action="#">
                         <div class="subscribe">
                             <input class="form-control-news" name="EMAIL" placeholder="Write your email here" required="" type="email">
                             <button class="btn-news btn-common" type="submit">Subscribe</button>
@@ -306,31 +341,23 @@ abc;
         <div class="container">
             <div class="row">
                 <div class="col-xs-12" style="padding-top:20px;">
-                    <form id="" method="get" action="<?php echo base_url(); ?>home/search" class="form-style form-style2" >
+                    <form class="form-style form-style2" method="post" action="<?php echo base_url(); ?>home/search">
+                    <!--<form id="" method="get" action="<?php /*echo base_url(); */?>home/search" class="form-style form-style2" >-->
                         <!--  start -->
-                        <div class="col-xs-12 block-padding-top" >
+                        <div class="col-xs-12 block-padding-top">
                             <div class="col-xs-12 ">
                                 <label> Destination </label>
                             </div>
                         </div>
-                        <div class="col-xs-12" >
+                        <div class="col-xs-12">
                             <div class="col-xs-12 ">
-                                <input name="endPoint" id="destination" type="text" placeholder="Type your Destination" />
-                            </div>
-                        </div>
-                        <!-- end  -->
-                        <!-- Start -->
-                        <div class="col-xs-12" >
-                            <div class="col-xs-6">
-                                <label> Starts on </label>
-                            </div>
-                            <div class="col-xs-6"  >
-                                <label> Ryde type </label>
+                                <input name="endPoint" id="destination" type="text" placeholder="Type your Destination" class="ui-autocomplete-input" autocomplete="off">
                             </div>
                         </div>
                         <div class="col-xs-12" >
                             <div class="col-xs-6">
-                                <input datepicker-popup name="selecteddate" class="datepicker" id="dates" type="text" placeholder="Dates" />
+                                <!--<input datepicker-popup name="selecteddate" class="datepicker" id="dates" type="text" placeholder="Dates"/>-->
+                                <input  type="text" name="selecteddate" class="datepicker" id="datepickmo"  placeholder="yyyy-mm-dd"/>
                             </div>
                             <div class="col-xs-6">
                                 <select class="dropdown-product" id="mountains" name="tourType2">
@@ -355,7 +382,7 @@ abc;
                             </div>
                             <div class="col-xs-12" >
                                 <div class="col-xs-6">
-                                    <input name="members"   id="members" type="text" placeholder="2 members" />
+                                    <input name="members" id="members" type="text" placeholder="2 members" />
                                 </div>
                                 <div class="col-xs-6">
                                     <select class="dropdown-product" id="guidedTour" name="guidedTour" required="">
@@ -422,7 +449,7 @@ abc;
                         <!-- end toggle-->
                         <!-- end  -->
                         <div class="col-xs-12" style="padding:20px;">
-                            <button class="btn2 btn-common btn-block"><strong>Search</strong></button>
+                            <button type="submit" class="btn2 btn-common btn-block"><strong>Go</strong></button>
                         </div>
                         <!-- end address -->
                     </form>

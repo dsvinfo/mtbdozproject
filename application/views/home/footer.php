@@ -41,9 +41,7 @@
             </div>
             <div class="row hidden-sm visible-xs hidden-md hidden-lg" >
                 <div class="col-md-12">
-                    <p style="text-align:justify; font-size:11px; "> MTBDoz is founded by bike enthusiasts that want to consolidate
-                        and aggregate the best bike rides into
-                        one user-friendly website.</p>
+                    <p style="text-align:justify; font-size:11px; ">All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -156,17 +154,17 @@
         });
 
         $(document).on('change','#selectCurrency',function(){
-            window.location.href = 'http://192.254.152.84/~mtbdoz?option=1&task=setcurrency&currency='+$('#selectCurrency').val();
+            /*window.location.href = 'http://192.254.152.84/~mtbdoz?option=1&task=setcurrency&currency='+$('#selectCurrency').val();*/
+            window.location.href = 'http://localhost/mtbdoz?'+$('#selectCurrency').val();
         })
     });
 </script>
 <script>
-	$("#from-datepicker").datepicker({ dateFormat: 'yy-mm-dd'});
-            $("#from-datepicker").on("change", function () {
-                var fromdate = $(this).val();               
-            });
-			
-	</script>
+	/*$("#from-datepicker").datepicker({ dateFormat: 'yy-mm-dd'});
+        $("#from-datepicker").on("change", function () {
+            var fromdate = $(this).val();
+        });*/
+</script>
 <!--ajax request for api search-->
 <script>
     var delay = (function(){
@@ -178,36 +176,50 @@
     })();
 
     $('#endPoint').keyup(function() {
-        delay(function(){
+
             var search = $('#endPoint').val();
-            $.ajax({
-                type: "POST",
-                url	: "<?php echo base_url().'home/destination_list';?>",
-                data:{
-                    qstring : search
-                },
-                cache: false,
-                success: function (resp)
-                {
-                    /*resp=JSON.parse(resp);
-                    $('#endPoint').html(resp.count);
-                    $('#endPoint').empty().append(resp.data);*/
-                    resp=JSON.parse(resp);
-                    $data=resp.data;
-                    $elm=$('#browsers');
-                    $elm.html('<option value="">-select-</option>');
-                    if($data.length > 0) {
-                        for($i=0;$i<$data.length;$i++)
-                        {
-                            $elm.append('<option value="'+$data[$i]+'">')
+            var slen = search.length;
+            if (slen>3) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url() . 'home/destination_list';?>",
+                    data: {
+                        qstring: search
+                    },
+                    cache: false,
+                    success: function (resp) {
+                        /*resp=JSON.parse(resp);
+                         $('#endPoint').html(resp.count);
+                         $('#endPoint').empty().append(resp.data);*/
+                        resp = JSON.parse(resp);
+                        $data = resp.data;
+                        $elm = $('#browsers');
+                        $elm.html('<option value="">-select-</option>');
+                        if ($data.length > 0) {
+                            for ($i = 0; $i < $data.length; $i++) {
+                                $elm.append('<option value="' + $data[$i] + '">')
+                            }
                         }
+                        return false;
                     }
-                    return false;
-                }
-            });
-        }, 4000 );
+                });
+            }
+
+
     });
+
 </script>
+
+<!--<script>
+    (function( $ ) {
+        var newdate = new Date();
+        $("#datepick").datepicker({
+            dateFormat: "yy-mm-dd",
+        });
+    })(jQuery);
+
+</script>-->
 </body>
 </html>
 
@@ -217,18 +229,21 @@
 
         var newdate = new Date();
         $(".datepicker").datepicker({
-            dateFormat: "yy-mm",
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "yy-mm-dd",
         });
 
+
         /*$("#endPoint").autocomplete({
-            source: 'http://192.254.152.84/~mtbdoz/wp-content/themes/twentytwelve/autosuggest.php'
-        });*/
-        $("#endPoint2").autocomplete({
-            source: 'http://192.254.152.84/~mtbdoz/wp-content/themes/twentytwelve/autosuggest.php'
+            source: 'http://localhost/mtbdoz/'
         });
-        /*$("#destination").autocomplete({
-            source: 'http://192.254.152.84/~mtbdoz/wp-content/themes/twentytwelve/autosuggest.php'
-        });*/
+        $("#endPoint2").autocomplete({
+            source: 'http://localhost/mtbdoz/'
+        });
+        $("#destination").autocomplete({
+            source: 'http://localhost/mtbdoz/'
+        });
 
         $(".advance").click(function(){
             $(".testab").show();
@@ -244,7 +259,7 @@
             $('.button-go-2').hide();
             $('.button-go-1').show();
             $('.advance2').hide();
-        });
+        });*/
 
     })(jQuery);
 

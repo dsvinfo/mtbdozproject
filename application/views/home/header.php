@@ -9,12 +9,12 @@
     <meta name="robots" content="noodp"/>
     <title>HOME - MTB</title>
     <script src="<?php echo base_url(); ?>assets/js/html5.js" type="text/javascript"></script>
-    <!--<script src="js/html5shiv.js"></script> Need to be removes-->
     <script src="<?php echo base_url(); ?>assets/js/respond.min.js"></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/favicon.ico">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.min.css">
+    <!--<link rel="stylesheet" href="<?php /*echo base_url(); */?>assets/css/jquery-ui.min.css">-->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/cirfontd.css" type="text/css">
@@ -67,7 +67,7 @@
             width:150px;
             display:block;
         }
-        .toggle.expanded{
+        .toggle.expanded {
             background:url("<?php echo base_url(); ?>assets/img/minus.png");
         }
 
@@ -84,7 +84,23 @@
             width:150px;
             display:block;
         }
-        .toggle2.expanded{
+        .toggle2.expanded2{
+            background:url("<?php echo base_url(); ?>assets/img/minus2.png");
+        }
+        .toggle3 {
+            display:inline-block;
+            height:28px;
+            width:105px;
+            text-align:center;
+            background:url("<?php echo base_url(); ?>assets/img/plus2.png");
+            margin-top:20px;
+            cursor:pointer;
+        }
+        .toggle3 span {
+            width:150px;
+            display:block;
+        }
+        .toggle3.expanded{
             background:url("<?php echo base_url(); ?>assets/img/minus2.png");
         }
         img.wp-smiley, img.emoji {
@@ -104,7 +120,7 @@
             width: 100%;
         }
 
-        .ui-datepicker{
+        .ui-datepicker {
             font-size:18px !important;
         }
 
@@ -121,23 +137,32 @@
             width: 100%;
             height: 100%;
         }
+
         .pading{
             padding:0 4px !important;
         }
+
         .tp-leftarrow.round {
             display: none;
         }
+
         .tp-rightarrow.round {
             display: none;
         }
+
         .home-text-region
         {
             margin-top:40% !important;
         }
-        .ui-autocomplete{z-index:1000 !important; max-height:300px; overflow-y:scroll;}
+        .ui-autocomplete
+        {
+            z-index:1000 !important; max-height:300px; overflow-y:scroll;
+        }
 
-
-        .category-header img {width:500px; height:260px;}
+        .category-header img
+        {
+            width:500px; height:260px;
+        }
     </style>
     <script>
         var loadDeferredStyles = function() {
@@ -189,11 +214,23 @@
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="nav navbar-nav navbar-left" id="myorder">
                         <li><a class="my_font" href="about_us"> About Us</a></li>
-                        <li><a class="my_font" href="contact_us"> Contact Us</a></li>
+                        <li><a class="my_font" href="#"> Contact Us</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right" >
-                        <li><a class="my_font" style='color:#777' href="client_login"><i class="lnr lnr-enter"></i> Login</a></li>
-                        <li><a class="my_font" style='color:#777' href="client_registration"><i class="lnr lnr-user"></i> Signup</a></li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="my_font" style='color:#777' href="client_login"><!--<i class="lnr lnr-enter"></i>-->Log in &nbsp&nbsp&nbsp&nbsp&nbsp|</a></li>
+                        <li><a class="my_font" style='color:#777' href="client_registration"><!--<i class="lnr lnr-user"></i>-->Sign up</a></li>
+                        <li>
+                            <form action="<?php base_url().'home/index';?>" method="get" id="frmcurrency">
+                                <?php if(isset($_GET['tour_id'])){?>
+                                    <input type = "hidden" name = "tour_id" value="<?php echo $_GET['tour_id'];?>">
+                                <?php } ?>
+                                <select name="Currency" id="Currency" class="currency-select" onchange="$('#frmcurrency').submit();">
+                                    <option value="USD" <?php echo isset($_SESSION['currency']) && $_SESSION['currency']=='USD'?'selected':'';?>>USD</option>
+                                    <option value="EUR" <?php echo isset($_SESSION['currency']) && $_SESSION['currency']=='EUR'?'selected':'';?>>EUR</option>
+                                    <option value="GBP"  <?php echo isset($_SESSION['currency']) && $_SESSION['currency']=='GBP'?'selected':'';?>>GBP</option>
+                                </select>
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 <!-- Navbar End -->
