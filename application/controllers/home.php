@@ -39,7 +39,6 @@ class home extends CI_Controller
 
     public function search()
     {
-
         if(session_id()) {
 
         } else {
@@ -60,7 +59,7 @@ class home extends CI_Controller
         //$check="";
         $date="";
         $destination="";
-        /* $groupsize=$this->input->post('groupsize');
+         /*$groupsize=$this->input->post('groupsize');
          $tourType=$this->input->post('tourType');
          $days=$this->input->post('days');
          $difficultyLevel=$this->input->post('difficultyLevel');
@@ -122,7 +121,7 @@ class home extends CI_Controller
                 $urlparam[]= "destination=".$this->input->post('endPoint');
                 $_SESSION['endPoint'] = $this->input->post('endPoint');
             }
-            if(!empty($this->input->post('selecteddate')) && $this->input->post('selecteddate') !='yyyy-mm-dd' || $this->input->post('selecteddate') !='yyyy-mm-dd')
+            if(!empty($this->input->post('selecteddate')) && $this->input->post('selecteddate') !='yy-mm-dd' || $this->input->post('selecteddate') !='yyyy-mm-dd' || $this->input->post('selecteddate') !='dd-MM-yyyy')
             {
                 $date=$this->input->post('selecteddate');
                 $urlparam[]="date=".$this->input->post('selecteddate');
@@ -165,11 +164,11 @@ class home extends CI_Controller
             if($this->input->get('sortby') && !empty($this->input->get('sortby')))
             {
                 list($ordertype,$sortby) = explode("_",$this->input->get('sortby'));
-                echo $Url="https://www.synergy-travel.com/ride-back/tour/list?currencyCode=$Currency&pageNo=$pageno&pageSize=10&orderType=$ordertype&order=$sortby";
+                $Url="https://www.synergy-travel.com/ride-back/tour/list?currencyCode=$Currency&pageNo=$pageno&pageSize=10&orderType=$ordertype&order=$sortby";
             }
             else
             {
-                echo $Url="https://www.synergy-travel.com/ride-back/tour/list?currencyCode=$Currency&pageNo=$pageno&pageSize=10";
+                $Url="https://www.synergy-travel.com/ride-back/tour/list?currencyCode=$Currency&pageNo=$pageno&pageSize=10";
             }
 
         }
@@ -178,11 +177,11 @@ class home extends CI_Controller
             if($this->input->get('sortby') && !empty($this->input->get('sortby')))
             {
                 list($ordertype,$sortby) = explode("_",$this->input->get('sortby'));
-                echo $Url="https://www.synergy-travel.com/ride-back/tour/list?currencyCode=$Currency&pageNo=$pageno&pageSize=10&orderType=$ordertype&order=$sortby&".implode("&",$urlparam);
+                $Url="https://www.synergy-travel.com/ride-back/tour/list?currencyCode=$Currency&pageNo=$pageno&pageSize=10&orderType=$ordertype&order=$sortby&".implode("&",$urlparam);
             }
             else
             {
-                echo $Url = "https://www.synergy-travel.com/ride-back/tour/list?currencyCode=$Currency&pageNo=$pageno&pageSize=10&".implode("&",$urlparam);
+                $Url = "https://www.synergy-travel.com/ride-back/tour/list?currencyCode=$Currency&pageNo=$pageno&pageSize=10&".implode("&",$urlparam);
             }
         }
 
