@@ -211,6 +211,7 @@
 
 </script>
 
+
 <!--<script>
     (function( $ ) {
         var newdate = new Date();
@@ -231,7 +232,12 @@
         $(".datepicker").datepicker({
             changeMonth: true,
             changeYear: true,
-            dateFormat: "yy-mm-dd",
+            showButtonPanel: true,
+            dateFormat: "dd-MM-yy",
+            /*onClose: function(dateText, inst) {
+                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1 ));
+            }*/
+
         });
 
 

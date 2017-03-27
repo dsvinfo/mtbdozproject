@@ -292,7 +292,7 @@ $date=$sap[0]->time;
                         </div>
                         <div class="col-md-2 col-xs-12 col-sm-3">
                             <div class="input-group-addon search-category-container">
-                                <input type="text" name="selecteddate" class="form-control3 datepicker" id="from-datepicker" placeholder="starts on" value="yyyy-mm-dd"/>
+                                <input type="text" name="selecteddate" class="form-control3 datepicker" id="from-datepicker" placeholder="yyyy-mm-dd"/>
                             </div>
                         </div>
                         <div class="col-md-2 col-xs-12 col-sm-3">

@@ -70,7 +70,7 @@
 </script>
 
 <!-- Start intro section -->
-<section id="intro" >
+<section id="intro">
     <div class="overlay section-search">
         <div class="container">
             <div class="main-text hidden-xs">
@@ -85,15 +85,12 @@
                                 <datalist id="browsers">
                                     <option value="Italy">
                                     <option value="Chile">
-                                    <option value="Peru">
-                                    <option value="Gerua">
-                                    <option value="Safari">
                                 </datalist>
                             </div>
                         </div>
                         <div class="col-md-2 col-xs-12 col-sm-3">
                             <div class="input-group-addon search-category-container">
-                                <input type="text" name="selecteddate" class="form-control3 datepicker" id="from-datepicker" placeholder="starts on" value="yyyy-mm-dd"/>
+                                <input type="text" name="selecteddate" class="form-control3 datepicker" id="from-datepicker" placeholder="yyyy-mm-dd" value="<?php echo date("F-Y");?>"/>
                             </div>
                         </div>
                         <div class="col-md-2 col-xs-12 col-sm-3">
@@ -119,14 +116,14 @@
                     </div>
 
                     <!-- Mobile view -->
-                    <div class="row search-bar search-bar2 hidden-md hidden-lg hidden-sm">
+                    <!--<div class="row search-bar search-bar2 hidden-md hidden-lg hidden-sm">
                         <div class="col-xs-12">
                             <div class="input-group-addon search-category-container">
                                 <input type="text" name="endPoint2" id="endPoint2" class="form-control3" placeholder="Destination"/>
                                 <span  class="banner-search-position"><a class='inline' href="#dream" style="text-decoration:underline;"> <i class="fa fa-search searc" ></i> </a></span>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <!-- filter-start -->
                     <div class="row search-bar clear " >
                         <div class="col-md-12 left1024">
@@ -194,14 +191,51 @@
                 <div class="toggle"> </div>
             </div>-->
             <div class="row ">
-                <div class=" col-xs-12 hidden-md hidden-lg hidden-sm visible-xs  ">
-                    <div class=" col-xs-8 no-padding">
+                <div class=" col-xs-12 hidden-md hidden-lg hidden-sm visible-xs">
+                    <!--<div class=" col-xs-8 no-padding">
                         <h2>
 
                         </h2>
+                    </div>-->
+                    <div class="col-xs-12 no-padding" style="text-align:center">
+                        <form class="search-form" method="post" action="<?php echo base_url(); ?>home/search">
+                            <!-- Mobile view -->
+                            <div class="row search-bar search-bar2 hidden-md hidden-lg hidden-sm" id="mymobisearch">
+                                <div class="col-xs-12">
+                                    <div class="input-group-addon search-category-container">
+                                        <!--<input type="text" name="endPoint2" id="endPoint2" class="form-control3" placeholder="Destination"/>-->
+                                        <input list="browsers" type="text" name="endPoint" id="endPoint" class="form-control3" placeholder="Destination"/>
+                                        <datalist id="browsers">
+                                            <option value="Italy">
+                                            <option value="Chile">
+                                        </datalist>
+                                        <span  class="banner-search-position"><a class='inline' href="#dream" style="text-decoration:underline;"> <i class="fa fa-search searc" ></i></a></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="input-group-addon search-category-container">
+                                        <input  type="text" name="selecteddate" class="datepicker" id="datepick" placeholder="starts on" value="<?php echo date("F-Y");?>" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="input-group-addon search-category-container">
+                                        <select class="dropdown-product" id="mountains" name="tourType">
+                                            <option value="">Ride type</option>
+                                            <option value="">All</option>
+                                            <option value="ALL_MOUNTAIN">All Mountain</option>
+                                            <option value="CROSS_COUNTRY">Cross Country</option>
+                                            <option value="DOWNHILL">Downhill</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12" style="padding:20px;">
+                                    <button class="btn2 btn-common btn-block"><strong>Go</strong></button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="col-xs-4 no-padding" style="text-align:center">
-                        <!--<button id="togglemap" class="map map-common" data-text-swap="Result" data-text-original="map">map</button>-->
+                        <button id="togglemap" class="map map-common" data-text-swap="Result" data-text-original="map">map</button>
                     </div>
                 </div>
             </div>
@@ -216,7 +250,7 @@
     <!-- fullmap toggle content -->
     <div class="container">
         <div class="row">
-            <div class="filter-fullmap " style="display: none;" >
+            <div class="filter-fullmap" style="display: none;">
                 <div class="col-md-12" >
                     <div class="map-footer-wrap col-md-12" id="map2">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3591.076263590369!2d72.24088761502901!3d25.834032183603988!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1485014154795" width="100%" height="465"></iframe>
@@ -316,7 +350,7 @@
                                     if(isset($address) && !empty($address) && !empty($image)) {
 
                                         $prepAddr = str_replace(' ', '+', $address);
-                                        $geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?key=AIzaSyDgHJjZpEmLG2omzERzL2VZXc54LJRgxBs&address=' . $prepAddr . '&sensor=false');
+                                        $geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?key=AIzaSyC7iCI6qIrq0jNNXxQ1leyctPskFle6hZ4&address=' . $prepAddr . '&sensor=false');
                                         $output = json_decode($geocode);
 
                                     }
@@ -394,7 +428,8 @@ abc;
                         if($totalpage > 0)
                         {
                             ?>
-                            <div class="col-md-12">
+                            <div class="clearfix"></div>
+                            <div class="col-md-12" id="myStyle">
                                 <hr style="padding:5px; "/>
                                 <div class="row">
                                     <div class="col-md-7 col-sm-6 col-xs-12 centersm">
@@ -482,7 +517,7 @@ abc;
 
 
                 <!-- map start-->
-                <div class="col-md-6 col-sm-12 col-xs-12 no-pad togglediv-map filter-content-map">
+                <div class="col-md-6 col-sm-12 col-xs-12 no-pad togglediv-map filter-content-map" id="mymapsearch">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <!-- fullmap toggle -->
                         <div class="togglefullmap" style="position:absolute;"></div>
@@ -498,7 +533,7 @@ abc;
                               </form>
                             </div> -->
                             <div class="map-footer-wrap" id="map">
-                                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3591.076263590369!2d72.24088761502901!3d25.834032183603988!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1485014154795" width="100%" height="400"></iframe> -->
+                                 <!--<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3591.076263590369!2d72.24088761502901!3d25.834032183603988!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1485014154795" width="100%" height="400"></iframe>-->
                             </div>
                         </div>
                     </div>
@@ -738,8 +773,7 @@ abc;
 
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgHJjZpEmLG2omzERzL2VZXc54LJRgxBs&callback=initMap"   async defer ></script>
-
+<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7iCI6qIrq0jNNXxQ1leyctPskFle6hZ4&callback=initMap"></script>
 <script type="text/javascript">
     function getLat(currentstate){
 

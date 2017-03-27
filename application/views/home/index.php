@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-md-3 col-xs-12 col-sm-3">
                                     <div class="input-group-addon search-category-container">
-                                        <input type="text" name="selecteddate" class="form-control3 datepicker" id="from-datepicker" placeholder="yyyy-mm-dd"/>
+                                        <input type="text" name="selecteddate" class="form-control3 datepicker" id="from-datepicker" placeholder="yyyy-mm-dd" value="<?php echo date("F-Y");?>"/>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-xs-12 col-sm-3">
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="input-group-addon search-category-container">
-                                        <input  type="text" name="selecteddate" class="datepicker" id="datepick" placeholder="starts on" value="yyyy-mm-dd"/>
+                                        <input  type="text" name="selecteddate" class="datepicker" id="datepick" placeholder="starts on" value="<?php echo date("F-Y");?>" />
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
@@ -275,7 +275,7 @@ abc;
                             $tour_id=$tour->tour->id;
                             $url=base_url()."home/detail?tour_id=$tour_id";
                             echo<<<abc
-                             <li class="mis-slide " onclick="location.href='#'" title="transylvania-guide">
+                             <li class="mis-slide " onclick="location.href='$url'" title="transylvania-guide">
                              <span class="category-box">
                                 <div class="category-header clear">
                                   <img src=$image alt="transylvania-guide"  title="transylvania-guide">
@@ -306,6 +306,7 @@ abc;
                     </ol>
                 </div>
             </div>
+            <div class="clearfix"></div>
             <div class="row">
                 <div class="col-md-12" style="text-align:center">
                     <button class="more more-common" >see more</button>
@@ -360,7 +361,7 @@ abc;
                                 <input  type="text" name="selecteddate" class="datepicker" id="datepickmo"  placeholder="yyyy-mm-dd"/>
                             </div>
                             <div class="col-xs-6">
-                                <select class="dropdown-product" id="mountains" name="tourType2">
+                                <select class="dropdown-product" id="" name="tourType2">
                                     <option value="">Ride type</option>
                                     <option value="">All</option>
                                     <option value="ALL_MOUNTAIN">All Mountain</option>
@@ -386,10 +387,10 @@ abc;
                                 </div>
                                 <div class="col-xs-6">
                                     <select class="dropdown-product" id="guidedTour" name="guidedTour" required="">
-                                        <option> Guided </option>
-                                        <option> Any</option>
-                                        <option>Guided</option>
-                                        <option> Self-guided</option>
+                                        <option  selected disabled> GuidedTour</option>
+                                        <option value="Any"> Any</option>
+                                        <option value="Guided">Guided</option>
+                                        <option value="Self-guided"> Self-guided</option>
                                     </select>
                                 </div>
                             </div>
@@ -406,20 +407,20 @@ abc;
                             <div class="col-xs-12" >
                                 <div class="col-xs-6">
                                     <select class="dropdown-product" id="duration" name="days" required="">
-                                        <option> Duration </option>
-                                        <option> Any</option>
-                                        <option>Single day</option>
-                                        <option>1-7 days</option>
-                                        <option>8 days and above</option>
+                                        <option selected disabled> Duration </option>
+                                        <option value="Any"> Any</option>
+                                        <option value="Single day">Single day</option>
+                                        <option value="1-7 days">1-7 days</option>
+                                        <option value="8 days and above">8 days and above</option>
                                     </select>
                                 </div>
                                 <div class="col-xs-6">
                                     <select class="dropdown-product" name="difficultyLevel" required="">
-                                        <option>Difficulty level</option>
-                                        <option>Any</option>
-                                        <option>Easy</option>
-                                        <option>Medium</option>
-                                        <option>Difficult</option>
+                                        <option selected disabled>Difficulty level</option>
+                                        <option value="Any">Any</option>
+                                        <option value="Easy">Easy</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Difficult">Difficult</option>
                                     </select>
                                 </div>
                             </div>
@@ -433,10 +434,10 @@ abc;
                             <div class="col-xs-12" >
                                 <div class="col-xs-12">
                                     <select class="dropdown-product" id="hiredBikes" name="hiredBikes" required="" tabindex="-98">
-                                        <option>Hired bike</option>
-                                        <option>Any</option>
-                                        <option>Hired</option>
-                                        <option>Own</option>
+                                        <option selected disabled> Hired bike </option>
+                                        <option value="Any">Any</option>
+                                        <option value="Hired">Hired</option>
+                                        <option value="Own">Own</option>
                                     </select>
                                 </div>
                             </div>
